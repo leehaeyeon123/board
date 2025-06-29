@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>게시판 목록</title>
+</head>
+<body>
+  <h1>게시판</h1>
+  <a href="/write">글쓰기</a>
+  <ul id="post-list"></ul>
+
+  <script>
+    async function loadPosts() {
+      const res = await fetch('/api/posts');
+      const posts = await res.json();
+      const list = document.getElementById('post-list');
+      list.innerHTML = '';
+      posts.forEach(post => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = `/view/${post.id}`;
+        a.textContent = post.title;
+        li.appendChild(a);
+        list.appendChild(li);
+      });
+    }
+    loadPosts();
+  </script>
+</body>
+</html>
