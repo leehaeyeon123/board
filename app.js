@@ -93,7 +93,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`서버 실행: http://localhost:${port}`);
+// 서버 실행
+app.listen(3000, () => {
+  console.log('서버 실행: http://localhost:3000');
 });
